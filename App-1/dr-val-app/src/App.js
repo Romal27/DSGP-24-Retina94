@@ -1,10 +1,9 @@
 import React from "react";
-import Login from "./Components/Login"; // Adjust path if needed
-
+import Signup from "./Components/Login";
 function App() {
   return (
     <div>
-      <Login />
+      <Signup /> 
     </div>
   );
 }
