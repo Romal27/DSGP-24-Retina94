@@ -39,37 +39,45 @@ const Signup = () => {
             <form onSubmit={handleSubmit} className={styles.signupBox}>
                 <h2 className={styles.title}>Sign Up</h2>
                 
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={userName}
-                    onChange={(e) => setUserName(e.target.value)}
-                    className={styles.inputField}
-                />
+                <div>
+                    <label className={styles.label}>Username:</label>
+                    <input
+                        type="text"
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        className={styles.inputField}
+                    />
+                </div>
                 
-                <input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className={styles.inputField}
-                />
+                <div>
+                    <label className={styles.label}>Email:</label>
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className={styles.inputField}
+                    />
+                </div>
                 
-                <input
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className={styles.inputField}
-                />
+                <div>
+                    <label className={styles.label}>Password:</label>
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className={styles.inputField}
+                    />
+                </div>
                 
-                <input
-                    type="password"
-                    placeholder="Confirm Password"
-                    value={confPassword}
-                    onChange={(e) => setConfPassword(e.target.value)}
-                    className={styles.inputField}
-                />
+                <div>
+                    <label className={styles.label}>Confirm Password:</label>
+                    <input
+                        type="password"
+                        value={confPassword}
+                        onChange={(e) => setConfPassword(e.target.value)}
+                        className={styles.inputField}
+                    />
+                </div>
                 
                 {error && <p className={styles.errorMessage}>{error}</p>}
                 

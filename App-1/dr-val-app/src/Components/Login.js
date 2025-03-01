@@ -2,19 +2,19 @@ import { useState } from "react";
 import styles from "./Login.module.css"; 
 
 const Login = () => {
-  const [userId, setUserId] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!userId || !password) {
+    if (!username || !password) {
       setError("Both fields are required");
       return;
     }
 
-    console.log("Logging in with", { userId, password });
+    console.log("Logging in with", { username, password });
     setError("");
   };
 
@@ -25,12 +25,12 @@ const Login = () => {
         {error && <p className={styles.errorMessage}>{error}</p>}
         <form onSubmit={handleSubmit}>
           <div>
-            <label className={styles.label}>User ID:</label>
+            <label className={styles.label}>Username:</label>
             <input
               type="text"
               className={styles.inputField}
-              value={userId}
-              onChange={(e) => setUserId(e.target.value)}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div>

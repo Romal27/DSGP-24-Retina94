@@ -1,4 +1,4 @@
-/* Fullscreen container with gradient background */
+Fullscreen container with gradient background
 .container {
   display: flex;
   align-items: center;
@@ -65,7 +65,7 @@
 
 /* Button */
 .button {
-  width: 100%;
+  width: 50%;
   padding: 10px;
   background-color: #2563eb;
   color: white;
