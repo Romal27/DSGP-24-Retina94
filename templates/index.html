@@ -1,0 +1,34 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retina Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h1>Retina Assistant</h1>
+        <div class="chat-box" id="chatBox">
+            {% for message in chat_history %}
+                <div class="message user-message animate-in">
+                    <p><strong>You:</strong> {{ message.user }}</p>
+                </div>
+                <div class="message bot-message animate-in" data-response="{{ message.bot }}">
+                    <p><strong>Retina Assistant:</strong> <span class="bot-text"></span></p>
+                </div>
+            {% endfor %}
+            <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                <span>Retina Assistant is typing...</span>
+            </div>
+        </div>
+        <form method="post" class="input-form" id="chatForm">
+            <input type="text" name="user_input" placeholder="Ask Retina Assistant about diabetic retinopathy or diabetes..." required>
+            <button type="submit">Send</button>
+        </form>
+        <p class="disclaimer">Note: I’m for info only—not a substitute for medical advice.</p>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
