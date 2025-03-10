@@ -5,41 +5,35 @@ document.addEventListener('DOMContentLoaded', function() {
     const input = document.querySelector('input[name="user_input"]');
     const typingIndicator = document.querySelector('#typingIndicator');
 
-    // Add animation class to all messages for initial load
+    // Animate messages on load
     messages.forEach((message, index) => {
         setTimeout(() => {
             message.classList.add('animate-in');
-        }, index * 100); // Stagger animations slightly for each message
+        }, index * 100);
     });
 
-    // Scroll to the bottom of the chat box on load
+    // Scroll to bottom of chat box
     if (chatBox) {
         chatBox.scrollTop = chatBox.scrollHeight;
     }
 
-    // Handle form submission (via button or Enter key)
+    // Handle form submission
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             const userInput = input.value.trim();
             if (userInput) {
-                // Show typing indicator
-                if (typingIndicator) {
-                    typingIndicator.style.display = 'block';
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                }
+                typingIndicator.style.display = 'flex';
+                chatBox.scrollTop = chatBox.scrollHeight;
 
-                // Submit the form to Flask
-                form.submit();
-
-                // Hide typing indicator after submission (handled by Flask reload)
-                if (typingIndicator) {
+                setTimeout(() => {
                     typingIndicator.style.display = 'none';
-                }
+                    form.submit();
+                }, 1200);
             }
         });
 
-        // Allow Enter key to submit
+        // Allow Enter key to send message
         input.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 form.dispatchEvent(new Event('submit'));
@@ -47,15 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Handle new messages after Flask reload (scroll to bottom)
-    setTimeout(() => {
-        if (chatBox) {
-            chatBox.scrollTop = chatBox.scrollHeight;
-        }
-    }, 100); // Small delay to ensure DOM is ready
-
-    // Remove typing animation logic for bot messages.
-    // This ensures bot responses appear instantly.
+    // Update bot messages after Flask reload
     const botMessages = chatBox.querySelectorAll('.bot-message');
     botMessages.forEach((message) => {
         message.querySelector('.bot-text').textContent = message.getAttribute('data-response');

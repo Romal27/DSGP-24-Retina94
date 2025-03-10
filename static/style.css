@@ -1,148 +1,126 @@
+/* Global Styles */
 body {
-    background: linear-gradient(45deg, #1e40af, #0AA3F6); /* Gradient from dark blue to light blue */
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(45deg, #0A192F, #081c46);
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Align to top for mobile */
+    align-items: flex-start;
+    min-height: 100vh;
 }
 
+/* Chat Container */
 .chat-container {
-    background-color: white;
-    padding: 15px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    width: 95%;
-    max-width: 400px; /* Narrower for mobile */
-    margin-top: 20px;
-    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.3);
+    width: 90%;
+    max-width: 450px;
+    margin-top: 30px;
 }
 
-h1 {
-    color: #1e40af;
+/* Header */
+.glow-text {
+    color: #00c6ff;
     text-align: center;
-    margin-bottom: 15px;
     font-size: 22px;
     font-weight: bold;
+    text-shadow: 0 0 10px #00c6ff, 0 0 20px #00c6ff;
 }
 
+/* Chat Box */
 .chat-box {
-    height: 60vh; /* More height for mobile chat history */
+    height: 60vh;
     overflow-y: auto;
-    margin-bottom: 15px;
-    padding: 10px;
-    background-color: #f0f2f5;
-    border-radius: 15px;
-    position: relative;
+    background: rgba(0, 0, 50, 0.5);
+    padding: 15px;
+    border-radius: 10px;
 }
 
+/* Messages */
 .message {
     margin: 10px 0;
     padding: 12px 16px;
     border-radius: 15px;
     max-width: 80%;
     word-wrap: break-word;
-    animation: fadeIn 0.5s ease-in;
+    animation: fadeIn 0.4s ease-in-out;
 }
 
 .user-message {
-    background-color: #e3f2fd;
-    margin-left: auto; /* Align to the right */
-    color: #1e40af;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    box-shadow: 0px 0px 10px rgba(0, 162, 255, 0.6);
+    color: white;
+    align-self: flex-end;
 }
 
 .bot-message {
-    background-color: #d1e7dd;
-    margin-right: auto; /* Align to the left */
-    color: #0f5132;
+    background: rgba(0, 0, 50, 0.7);
+    color: #00c6ff;
+    align-self: flex-start;
 }
 
-/* Removed the incorrect typing animation that was causing the issue */
+/* Typing Indicator */
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    color: #00c6ff;
+    font-size: 14px;
+}
 
+.dots {
+    width: 8px;
+    height: 8px;
+    margin: 0 2px;
+    background-color: #00c6ff;
+    border-radius: 50%;
+    animation: blink 1.5s infinite ease-in-out;
+}
+
+.dots:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.dots:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Chat Input */
 .input-form {
     display: flex;
     gap: 10px;
-    margin-bottom: 15px;
 }
 
-input[type="text"] {
+input {
     flex: 1;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
     border-radius: 20px;
-    font-size: 16px;
-    outline: none;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 button {
-    padding: 12px 20px;
-    background-color: #1e40af;
+    padding: 12px;
+    background: #007bff;
     color: white;
-    border: none;
     border-radius: 20px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-    font-size: 16px;
+    transition: 0.3s;
 }
 
 button:hover {
-    background-color: #0f2d6d;
-    transform: scale(1.05);
+    background: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 162, 255, 0.7);
 }
 
-.disclaimer {
-    font-size: 12px;
-    color: #7f8c8d;
-    text-align: center;
-    margin-top: 10px;
-}
-
-.typing-indicator {
-    margin: 10px 0;
-    padding: 10px 16px;
-    background-color: #d1e7dd;
-    border-radius: 15px;
-    color: #0f5132;
-    font-style: italic;
-    max-width: 80%;
-    margin-right: auto; /* Align to the left like bot messages */
-}
-
-/* Animation for messages */
+/* Animations */
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Removed unnecessary @keyframes typing */
-
-/* Responsive design for mobile */
-@media (max-width: 480px) {
-    .chat-container {
-        width: 90%;
-        margin-top: 10px;
-        margin-bottom: 10px;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    .chat-box {
-        height: 50vh;
-    }
-
-    input[type="text"], button {
-        font-size: 14px;
-        padding: 10px;
-    }
+@keyframes blink {
+    50% { opacity: 0.3; }
 }
