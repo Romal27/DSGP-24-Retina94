@@ -24,22 +24,24 @@ const Login = () => {
         <h2 className="title">Login</h2>
         {error && <p className="errorMessage">{error}</p>}
         <form onSubmit={handleSubmit}>
-          <div>
-            <label className="label">Username:</label>
+          <div className="inputGroup">
+            <label className="label">Username</label>
             <input
               type="text"
               className="inputField"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
             />
           </div>
-          <div>
-            <label className="label">Password:</label>
+          <div className="inputGroup">
+            <label className="label">Password</label>
             <input
               type="password"
               className="inputField"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              placeholder="Enter your password"
             />
           </div>
           <button type="submit" className="button">

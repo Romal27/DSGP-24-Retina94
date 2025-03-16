@@ -8,11 +8,11 @@
     position: relative;
     overflow: hidden;
 }
-  
-  /* Background gradient covering the entire screen */
+
+/* Background gradient covering the entire screen */
 .container::before {
     content: "";
-    position: fixed; /* Ensures it covers the whole screen */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -20,51 +20,68 @@
     background: linear-gradient(135deg, #1e40af 40%, #0AA3F6 60%);
     z-index: -1;
 }
-  
-  
+
 .loginBox {
     background: white;
-    padding: 2rem;
+    padding: 2.5rem;
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    width: 320px;
+    width: 350px;
     text-align: center;
     position: relative;
 }
-  
+
+/* Login Title */
 .title {
     font-size: 1.8rem;
     font-weight: 600;
     color: #1e3a8a;
     margin-bottom: 1rem;
 }
-  
+
+/* Error Message */
 .errorMessage {
     color: red;
     font-size: 0.9rem;
     margin-bottom: 0.8rem;
 }
-  
+
+/* Input Group */
+.inputGroup {
+    text-align: left;
+    margin-bottom: 1rem;
+}
+
+.label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #1e3a8a;
+    margin-bottom: 5px;
+}
+
+/* Styled Input Fields */
 .inputField {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1rem;
-    margin-bottom: 1rem;
+    background-color: white;
     transition: 0.3s ease;
+    box-sizing: border-box;
 }
-  
+
 .inputField:focus {
     border-color: #2563eb;
     box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
     outline: none;
 }
-  
-  /* Button */
+
+/* Styled Button */
 .button {
-    width: 50%;
-    padding: 10px;
+    width: 100%;
+    padding: 12px;
     background-color: #2563eb;
     color: white;
     font-size: 1rem;
@@ -72,9 +89,9 @@
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s ease;
+    font-weight: 500;
 }
-  
+
 .button:hover {
     background-color: #1e40af;
 }
-  
