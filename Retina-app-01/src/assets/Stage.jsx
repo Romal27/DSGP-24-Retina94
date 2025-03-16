@@ -5,26 +5,25 @@ const DiabeticRetinopathy = () => {
   const [image, setImage] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState("");
+  const [prediction, setPrediction] = useState("");
 
-  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (!file) return;
 
     setSelectedFile(file);
     setImage(URL.createObjectURL(file));
+    setPrediction(""); // Reset prediction when new image is selected
   };
 
-  // Handle Upload Button Click
   const handleUpload = async () => {
     if (!selectedFile) {
-      setMessage("Please select an image first.");
+      setPrediction("Please select an image first.");
       return;
     }
 
     setLoading(true);
-    setMessage("Uploading...");
+    setPrediction("Processing...");
 
     const formData = new FormData();
     formData.append("file", selectedFile);
@@ -36,14 +35,13 @@ const DiabeticRetinopathy = () => {
       });
 
       const data = await response.json();
-
       if (data.error) {
-        setMessage(`Error: ${data.error}`);
+        setPrediction(`Error: ${data.error}`);
       } else {
-        setMessage(`Fundus Image: ${data.fundus_image}`);
+        setPrediction(`Diabetic Retinopathy Stage: ${data.prediction}`);
       }
     } catch (error) {
-      setMessage("Error connecting to the server.");
+      setPrediction("Error connecting to the server.");
     }
 
     setLoading(false);
@@ -51,7 +49,6 @@ const DiabeticRetinopathy = () => {
 
   return (
     <div className="container">
-      {/* Navigation Bar */}
       <nav className="navbar">
         <div className="logo">RetinaCare</div>
         <ul className="nav-links">
@@ -61,17 +58,11 @@ const DiabeticRetinopathy = () => {
           <li>Direction</li>
           <li>About Us</li>
         </ul>
-        <div className="auth-buttons">
-          <button className="signup-btn">Sign Up</button>
-          <button className="login-btn">Login</button>
-        </div>
       </nav>
 
-      {/* Main Content */}
       <div className="content">
         <h2 className="title">Diabetic Retinopathy Stage Identification</h2>
 
-        {/* Image Upload Section */}
         <div className="upload-section">
           <label htmlFor="file-upload" className="upload-box">
             {image ? (
@@ -91,20 +82,17 @@ const DiabeticRetinopathy = () => {
             className="file-input"
           />
 
-          {/* Upload Button */}
           <button className="upload-btn" onClick={handleUpload} disabled={!selectedFile || loading}>
-            {loading ? "Uploading..." : "Upload"}
+            {loading ? "Processing..." : "Upload & Predict"}
           </button>
 
-          {/* Show Result */}
-          {message && (
+          {prediction && (
             <div className="result-box">
-              <p>{message}</p>
+              <p>{prediction}</p>
             </div>
           )}
         </div>
 
-        {/* Sample Fundus Image */}
         <div className="sample-image-section">
           <h3>How does a Fundus Image look like?</h3>
           <img
