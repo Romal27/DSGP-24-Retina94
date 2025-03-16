@@ -1,200 +1,178 @@
 /* General Styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-  }
-  
+  font-family: "Poppins", sans-serif;
+  background-color: #eef2f7;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b4da2;
+  padding: 12px 20px;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  height: 70px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  cursor: pointer;
+  font-size: 16px;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links li:hover {
+  color: #ffdd57;
+}
+
+/* Ensure content is visible */
+.content {
+  padding-top: 100px;
+  text-align: center;
+}
+/* Title Text */
+.title {
+  color: #0b4da2; /* Change this to your preferred color */
+  font-size: 28px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Upload Section */
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0;
+  width: 100%;
+}
+
+.upload-box {
+  width: 95%;
+  max-width: 400px;
+  height: 260px;
+  border: 2px dashed #007bff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  background-color: white;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.upload-box:hover {
+  background-color: #f0f8ff;
+  transform: scale(1.02);
+}
+
+.upload-placeholder {
+  color: #007bff;
+  font-size: 18px;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* File Input */
+.file-input {
+  display: none;
+}
+
+/* Result Box */
+.result-box {
+  background-color: #ffffff;
+  border: 2px solid #007bff;
+  padding: 12px;
+  width: 300px;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #0b4da2;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sample Fundus Image */
+.sample-image-section {
+  margin: 25px 0;
+  width: 100%;
+  text-align: center;
+  color: black;
+}
+
+.sample-image {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 12px;
+  border: 3px solid #007bff;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+/* Upload Button */
+.upload-btn {
+  margin-top: 10px;
+  padding: 12px 20px;
+  background-color: #007bff;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.upload-btn:hover {
+  background-color: #0056b3;
+}
+
+.upload-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Fully Responsive */
+@media (max-width: 768px) {
   .container {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .upload-box,
+  .sample-image {
     width: 100%;
-    max-width: 1200px;
-    text-align: center;
-    padding: 20px;
   }
-  
-  /* Navbar */
-  .navbar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #0b4da2;
-    padding: 15px 20px;
-    color: white;
-  }
-  
-  .logo {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
+
   .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    font-size: 16px;
-  }
-  
-  .nav-links li {
-    cursor: pointer;
-  }
-  
-  .auth-buttons {
-    display: flex;
+    flex-direction: column;
+    text-align: center;
     gap: 10px;
   }
-  
-  .signup-btn,
-  .login-btn {
-    padding: 8px 15px;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .signup-btn {
-    background-color: white;
-    color: #0b4da2;
-    border-radius: 5px;
-  }
-  
-  .login-btn {
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-  }
-  
-  /* Responsive Navbar */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      text-align: center;
-    }
-    .nav-links {
-      flex-direction: column;
-      gap: 10px;
-    }
-  }
-  
-  /* Content Section */
-  .title {
-    font-size: 24px;
-    margin: 20px 0;
-    font-weight: bold;
-  }
-  
-  /* Upload Section */
-  .upload-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 20px 0;
-    width: 100%;
-  }
-  
-  .upload-box {
-    width: 90%;
-    max-width: 400px;
-    height: 250px;
-    border: 2px dashed #007bff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .upload-box:hover {
-    background-color: #f0f8ff;
-  }
-  
-  .upload-placeholder {
-    color: #007bff;
-  }
-  
-  .uploaded-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .file-input {
-    display: none;
-  }
-  
-  .submit-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Sample Fundus Image */
-  .sample-image-section {
-    margin: 20px 0;
-    width: 100%;
-  }
-  
-  .sample-image {
-    width: 90%;
-    max-width: 300px;
-    border-radius: 10px;
-    border: 2px solid #007bff;
-  }
-  
-  /* Result Section */
-  .result-section {
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  .result-title {
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
-    padding: 10px;
-    display: inline-block;
-    border-radius: 5px;
-  }
-  
-  .stage-btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .stage-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .upload-box,
-    .sample-image {
-      width: 100%;
-    }
-  
-    .submit-btn,
-    .stage-btn {
-      width: 100%;
-    }
-  }
-  
+}

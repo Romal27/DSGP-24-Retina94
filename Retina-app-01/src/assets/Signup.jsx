@@ -11,34 +11,42 @@ const Signup = () => {
     const [error, setError] = useState("");
 
     const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
         if (!userName || !email || !password || !confPassword) {
             setError("All fields are required");
             return;
         }
-
-        if (!isValidEmail(email)) {
-            setError("Invalid email. Please check again.");
-            return;
-        }
-
+    
         if (password !== confPassword) {
-            setError("The passwords do not match.");
+            setError("Passwords do not match.");
             return;
         }
-
-        if (!agreeTerms) {
-            setError("You must agree to the Terms & Conditions.");
-            return;
+    
+        const userData = { userName, email, password };
+    
+        try {
+            const response = await fetch("http://localhost:5000/api/users/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(userData),
+            });
+    
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.message);
+    
+            alert("Registration successful!");
+            setUserName("");
+            setEmail("");
+            setPassword("");
+            setConfPassword("");
+            setError("");
+        } catch (err) {
+            setError(err.message);
         }
-
-        console.log("Signing Up with:", { userName, email, password });
-        setError("");
     };
-
+    
     return (
         <div className="container">
             <div className="signupBox">
