@@ -1,7 +1,6 @@
 const express = require("express");
 const fs = require("fs");
 const path = require("path");
-const cors = require("cors");
 
 const router = express.Router();
 const usersFilePath = path.join(__dirname, "users.json");
@@ -29,7 +28,6 @@ const writeUsersToFile = (users) => {
 // API Endpoint: Register User
 router.post("/register", (req, res) => {
     const { userName, email, password } = req.body;
-
     let users = readUsersFromFile();
 
     // Check if email already exists
@@ -42,7 +40,22 @@ router.post("/register", (req, res) => {
     users.push(newUser);
     writeUsersToFile(users);
 
-    res.status(201).json({ message: "User registered successfully", user: newUser });
+    res.status(201).json({ message: "User registered successfully" });
+});
+
+// ✅ **Fix: Login Route Should Only Return Success Message**
+router.post("/login", (req, res) => {
+    const { email, password } = req.body;
+    let users = readUsersFromFile();
+
+    // Check if user exists and password matches
+    const userExists = users.some((u) => u.email === email && u.password === password);
+    
+    if (userExists) {
+        res.json({ success: true, message: "Login successful" });
+    } else {
+        res.status(401).json({ error: "Invalid email or password" });
+    }
 });
 
 module.exports = router;

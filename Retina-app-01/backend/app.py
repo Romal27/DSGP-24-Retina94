@@ -6,10 +6,10 @@ import numpy as np
 import os
 
 app = Flask(__name__)
+model = tf.keras.models.load_model("saved_model")
 
-# Load the trained model
-MODEL_PATH = "D:\final_fundus_model.h5"
-model = load_model(MODEL_PATH)
+
+
 
 # Define function to process and predict images
 def preprocess_and_predict(img_path):

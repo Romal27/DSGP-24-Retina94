@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Login.css"; 
+import "../assets/Login.css";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -19,7 +20,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="login-container">
       <div className="loginBox">
         <h2 className="title">Login</h2>
         {error && <p className="errorMessage">{error}</p>}
