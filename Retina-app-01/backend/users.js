@@ -43,7 +43,7 @@ router.post("/register", (req, res) => {
     res.status(201).json({ message: "User registered successfully" });
 });
 
-// ✅ **Fix: Login Route Should Only Return Success Message**
+
 router.post("/login", (req, res) => {
     const { email, password } = req.body;
     let users = readUsersFromFile();

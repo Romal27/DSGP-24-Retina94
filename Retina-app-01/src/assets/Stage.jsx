@@ -52,8 +52,7 @@ const DiabeticRetinopathy = () => {
   };
 
   return (
-    <div className="stage-container"> {/* ✅ Updated class name */}
-      {/* Navigation Bar */}
+    <div className="stage-container"> 
       <nav className="navbar">
         <div className="logo">RetinaCare</div>
         <ul className="nav-links">

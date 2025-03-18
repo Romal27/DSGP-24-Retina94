@@ -8,12 +8,8 @@ import os
 app = Flask(__name__)
 model = tf.keras.models.load_model("saved_model")
 
-
-
-
-# Define function to process and predict images
 def preprocess_and_predict(img_path):
-    img = image.load_img(img_path, target_size=(224, 224))  # Adjust size based on your model
+    img = image.load_img(img_path, target_size=(224, 224)) 
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0) / 255.0  # Normalize
 

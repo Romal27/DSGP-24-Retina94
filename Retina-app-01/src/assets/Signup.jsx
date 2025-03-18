@@ -118,7 +118,7 @@ const Signup = () => {
                 </form>
             </div>
 
-            {/* Terms & Conditions Modal */}
+         
             {showTerms && (
                 <div className="modalOverlay">
                     <div className="modalContent">
