@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";  
+import { useNavigate } from "react-router-dom";
+import { FaUserCircle } from "react-icons/fa"; 
+import axios from "axios";
 import "./Stage.css";
 
 const DiabeticRetinopathy = () => {
@@ -9,7 +11,6 @@ const DiabeticRetinopathy = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
-  // Handle file selection
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -18,7 +19,6 @@ const DiabeticRetinopathy = () => {
     setImage(URL.createObjectURL(file));
   };
 
-  // Handle Upload Button Click
   const handleUpload = async () => {
     if (!selectedFile) {
       setMessage("Please select an image first.");
@@ -32,17 +32,16 @@ const DiabeticRetinopathy = () => {
     formData.append("file", selectedFile);
 
     try {
-      const response = await fetch("http://localhost:5000/predict", {
-        method: "POST",
-        body: formData,
+      const response = await axios.post("http://127.0.0.1:5000/predict", formData, {
+        headers: { "Content-Type": "multipart/form-data" },
       });
 
-      const data = await response.json();
+      const data = response.data;
 
       if (data.error) {
         setMessage(`Error: ${data.error}`);
       } else {
-        setMessage(`Fundus Image: ${data.fundus_image}`);
+        setMessage(`Prediction: ${data.fundus_image} (Confidence: ${(data.confidence * 100).toFixed(2)}%)`);
       }
     } catch (error) {
       setMessage("Error connecting to the server.");
@@ -52,9 +51,11 @@ const DiabeticRetinopathy = () => {
   };
 
   return (
-    <div className="stage-container"> 
+    <div className="stage-container">
+      
       <nav className="navbar">
         <div className="logo">RetinaCare</div>
+
         <ul className="nav-links">
           <li>Home</li>
           <li>Stage</li>
@@ -62,17 +63,19 @@ const DiabeticRetinopathy = () => {
           <li>Direction</li>
           <li>About Us</li>
         </ul>
-        <div className="auth-buttons">
-          <button className="signup-btn" onClick={() => window.open("/signup", "_blank")}>Sign Up</button>
-          <button className="login-btn" onClick={() => window.open("/login", "_blank")}>Login</button>
+
+        <div className="nav-right">
+         
+          <FaUserCircle className="profile-icon" onClick={() => navigate("/profile")} />
+
+          <button className="signup-btn" onClick={() => navigate("/signup")}>Sign Up</button>
+          <button className="login-btn" onClick={() => navigate("/login")}>Login</button>
         </div>
       </nav>
 
-      {/* Main Content */}
       <div className="content">
-        <h2 className="title">Diabetic Retinopathy Stage Identification</h2>
+        <h2 className="title">Fundus Image Identification</h2>
 
-        {/* Image Upload Section */}
         <div className="upload-section">
           <label htmlFor="file-upload" className="upload-box">
             {image ? (
@@ -91,13 +94,10 @@ const DiabeticRetinopathy = () => {
             onChange={handleFileChange}
             className="file-input"
           />
-
-          {/* Upload Button */}
           <button className="upload-btn" onClick={handleUpload} disabled={!selectedFile || loading}>
             {loading ? "Uploading..." : "Upload"}
           </button>
 
-          {/* Show Result */}
           {message && (
             <div className="result-box">
               <p>{message}</p>
@@ -105,7 +105,6 @@ const DiabeticRetinopathy = () => {
           )}
         </div>
 
-        {/* Sample Fundus Image */}
         <div className="sample-image-section">
           <h3>How does a Fundus Image look like?</h3>
           <img src="/image.jpg" alt="Fundus Sample" className="sample-image" />

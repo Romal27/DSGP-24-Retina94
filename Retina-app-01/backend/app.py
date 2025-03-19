@@ -1,36 +1,42 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import tensorflow as tf
-from tensorflow.keras.models import load_model
-from tensorflow.keras.preprocessing import image
 import numpy as np
-import os
+from PIL import Image
+import io
 
 app = Flask(__name__)
-model = tf.keras.models.load_model("saved_model")
+CORS(app)  
+model = tf.keras.models.load_model("fundus_classifier_optimized.h5")
 
-def preprocess_and_predict(img_path):
-    img = image.load_img(img_path, target_size=(224, 224)) 
-    img_array = image.img_to_array(img)
-    img_array = np.expand_dims(img_array, axis=0) / 255.0  # Normalize
+class_labels = ["Fundus", "No Fundus"]  # 0 = Fundus, 1 = Non Fundus
 
-    prediction = model.predict(img_array)
-    predicted_class = np.argmax(prediction, axis=1)[0]  # Get class index
-
-    return predicted_class
+def preprocess_image(image):
+    """Preprocess the uploaded image for model prediction."""
+    image = image.resize((224, 224)) 
+    image = np.array(image) / 255.0  
+    image = np.expand_dims(image, axis=0)  
+    return image
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    if "file" not in request.files:
-        return jsonify({"error": "No file uploaded"}), 400
+    try:
+        file = request.files["file"]
+        image = Image.open(io.BytesIO(file.read())).convert("RGB")  
+        processed_image = preprocess_image(image)
 
-    file = request.files["file"]
-    file_path = "uploaded_image.jpg"
-    file.save(file_path)  # Save uploaded image
+        prediction = model.predict(processed_image)[0][0]  
 
-    # Run prediction
-    predicted_class = preprocess_and_predict(file_path)
+        #  0 = Fundus, 1 = Non Fundus
+        result = class_labels[int(prediction < 0.5)]  
 
-    return jsonify({"prediction": int(predicted_class)})  # Return predicted class
+        return jsonify({
+            "fundus_image": result,
+            "confidence": float(prediction)
+        })
+
+    except Exception as e:
+        return jsonify({"error": str(e)})
 
 if __name__ == "__main__":
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
