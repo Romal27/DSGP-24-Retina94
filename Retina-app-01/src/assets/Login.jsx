@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom"; 
 import "../assets/Login.css";
-
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
@@ -15,7 +16,7 @@ const Login = () => {
       return;
     }
 
-    console.log("Logging in with", { username, password });
+    console.log("Logging in with", { username, password, rememberMe });
     setError("");
   };
 
@@ -45,10 +46,28 @@ const Login = () => {
               placeholder="Enter your password"
             />
           </div>
+
+        
+          <div className="rememberMe">
+            <input
+              type="checkbox"
+              id="rememberMe"
+              checked={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+            />
+            <label htmlFor="rememberMe">Remember Me</label>
+          </div>
+
           <button type="submit" className="button">
             Login
           </button>
         </form>
+
+        
+        <p className="registerText">
+          Don't have an account yet?{" "}
+          <Link to="/signup" className="registerLink">Register</Link>
+        </p>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-/* Ensure this applies only to the Login page */
 .login-container {
     display: flex;
     align-items: center;
@@ -9,7 +8,7 @@
     overflow: hidden;
 }
 
-/* Background for Login Page */
+
 .login-container::before {
     content: "";
     position: absolute;
@@ -17,24 +16,38 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    
+    
     background: linear-gradient(135deg, #1e40af 40%, #0AA3F6 60%);
-    background-size: cover;
-    background-position: center;
+    background: url('/image eye.jpg') no-repeat center center/cover, 
+                linear-gradient(135deg, #1e40af 40%, #0AA3F6 60%);
+    
+    filter: blur(5px); 
+    z-index: -1;
+}
+
+.login-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
     z-index: -1;
 }
 
 .loginBox {
-    background: white;
+    background: rgba(255, 255, 255, 0.8); 
+    backdrop-filter: blur(8px); 
     padding: 2.5rem;
     border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     width: 350px;
     text-align: center;
     position: relative;
 }
 
-
-/* Login Title */
 .title {
     font-size: 1.8rem;
     font-weight: 600;
@@ -42,14 +55,14 @@
     margin-bottom: 1rem;
 }
 
-/* Error Message */
+
 .errorMessage {
     color: red;
     font-size: 0.9rem;
     margin-bottom: 0.8rem;
 }
 
-/* Input Group */
+
 .inputGroup {
     text-align: left;
     margin-bottom: 1rem;
@@ -63,7 +76,7 @@
     margin-bottom: 5px;
 }
 
-/* Styled Input Fields */
+
 .inputField {
     width: 100%;
     padding: 12px;
@@ -81,7 +94,6 @@
     outline: none;
 }
 
-/* Styled Button */
 .button {
     width: 100%;
     padding: 12px;
@@ -97,4 +109,37 @@
 
 .button:hover {
     background-color: #1e40af;
+}
+
+
+.rememberMe {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 0.9rem;
+    color: #1e3a8a;
+}
+
+.rememberMe input {
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+
+.registerText {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    color: #1e3a8a;
+}
+
+.registerLink {
+    color: #2563eb;
+    font-weight: 500;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.registerLink:hover {
+    text-decoration: underline;
+    color: #1e40af;
 }
