@@ -98,7 +98,6 @@ const Signup = () => {
                         />
                     </div>
 
-                    {/* Terms & Conditions Checkbox */}
                     <div className="termsContainer">
                         <input
                             type="checkbox"
@@ -118,7 +117,6 @@ const Signup = () => {
                 </form>
             </div>
 
-         
             {showTerms && (
                 <div className="modalOverlay">
                     <div className="modalContent">
