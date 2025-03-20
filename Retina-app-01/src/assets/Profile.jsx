@@ -1,31 +1,35 @@
 import { useState, useEffect } from "react";
+import { FaUserCircle } from "react-icons/fa";
 import "../assets/Profile.css";
 
 const Profile = () => {
-  const [profilePic, setProfilePic] = useState(localStorage.getItem("profilePic") || null);
-  const [username, setUsername] = useState(localStorage.getItem("username") || "TeranSen");
-  const [email, setEmail] = useState(localStorage.getItem("email") || "romal@example.com");
-  const [fullName, setFullName] = useState(localStorage.getItem("fullName") || "Thiviru Dulanka");
-  const [bio, setBio] = useState(localStorage.getItem("bio") || "Hey there! I'm using this app.");
+  const [profilePic, setProfilePic] = useState(null);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState(""); 
+  const [fullName, setFullName] = useState("");
+  const [bio, setBio] = useState("");
 
   useEffect(() => {
-    setProfilePic(localStorage.getItem("profilePic") || null);
+    const storedProfilePic = localStorage.getItem("profilePic");
+    setProfilePic(storedProfilePic && storedProfilePic !== "null" ? storedProfilePic : null);
+    setUsername(localStorage.getItem("username") || "TeranSen");
+    setEmail(localStorage.getItem("email") || "romal@example.com");
+    setFullName(localStorage.getItem("fullName") || "Thiviru Dulanka");
+    setBio(localStorage.getItem("bio") || "Hey there! I'm using this app.");
   }, []);
 
- 
   const handleProfilePicChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setProfilePic(reader.result);
-        localStorage.setItem("profilePic", reader.result); // local Storage
+        localStorage.setItem("profilePic", reader.result);
       };
       reader.readAsDataURL(file);
     }
   };
 
-  
   const handleSaveChanges = () => {
     localStorage.setItem("username", username);
     localStorage.setItem("fullName", fullName);
@@ -33,12 +37,11 @@ const Profile = () => {
     alert("Profile updated successfully!");
   };
 
-  
   const handleLogout = () => {
     console.log("User Logged Out");
     alert("Logged out successfully!");
-    localStorage.clear(); 
-    window.location.reload(); 
+    localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -46,20 +49,18 @@ const Profile = () => {
       <div className="profile-box">
         <h2 className="title">My Profile</h2>
 
-       
         <div className="profile-pic-container">
           <label htmlFor="profilePicInput">
-            <img
-              src={profilePic || "https://via.placeholder.com/150"}
-              alt="Profile"
-              className="profile-pic"
-            />
+            {profilePic && profilePic !== "null" ? (
+              <img src={profilePic} alt="Profile" className="profile-pic" />
+            ) : (
+              <FaUserCircle className="default-profile-icon" />
+            )}
           </label>
           <input type="file" id="profilePicInput" onChange={handleProfilePicChange} hidden />
           <p>Click to change profile picture</p>
         </div>
 
-        
         <div className="inputGroup">
           <label className="label">Username</label>
           <input type="text" className="inputField" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -80,10 +81,7 @@ const Profile = () => {
           <textarea className="inputField bioField" value={bio} onChange={(e) => setBio(e.target.value)} />
         </div>
 
-        
         <button className="button" onClick={handleSaveChanges}>Save Changes</button>
-
-       
         <button className="logoutButton" onClick={handleLogout}>Logout</button>
       </div>
     </div>

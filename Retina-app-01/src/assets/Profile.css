@@ -82,6 +82,12 @@
 }
 
 
+.default-profile-icon {
+    font-size: 100px; 
+    color: gray;
+    cursor: pointer;
+  }
+  
 .inputGroup {
     text-align: left;
     margin-bottom: 1rem;

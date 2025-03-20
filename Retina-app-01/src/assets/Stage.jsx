@@ -52,26 +52,29 @@ const DiabeticRetinopathy = () => {
 
   return (
     <div className="stage-container">
-      
       <nav className="navbar">
-        <div className="logo">RetinaCare</div>
+  <div className="logo">Retina+94</div>
 
-        <ul className="nav-links">
-          <li>Home</li>
-          <li>Stage</li>
-          <li>Chatbot</li>
-          <li>Direction</li>
-          <li>About Us</li>
-        </ul>
+  <ul className="nav-links">
+    <li>Home</li>
+    <li>Stage</li>
+    <li>Chatbot</li>
+    <li>Direction</li>
+    <li>About Us</li>
+  </ul>
 
-        <div className="nav-right">
-         
-          <FaUserCircle className="profile-icon" onClick={() => navigate("/profile")} />
+  <div className="nav-right">
+    <FaUserCircle className="profile-icon" onClick={() => window.open("/profile", "_blank")} />
 
-          <button className="signup-btn" onClick={() => navigate("/signup")}>Sign Up</button>
-          <button className="login-btn" onClick={() => navigate("/login")}>Login</button>
-        </div>
-      </nav>
+    <button className="signup-btn" onClick={() => window.open("/signup", "_blank")}>
+      Sign Up
+    </button>
+
+    <button className="login-btn" onClick={() => window.open("/login", "_blank")}>
+      Login
+    </button>
+  </div> 
+</nav> 
 
       <div className="content">
         <h2 className="title">Fundus Image Identification</h2>
@@ -104,13 +107,30 @@ const DiabeticRetinopathy = () => {
             </div>
           )}
         </div>
-
+        <h2 className="title">How does a fundus image looks like?</h2>
         <div className="sample-image-section">
-          <h3>How does a Fundus Image look like?</h3>
-          <img src="/image.jpg" alt="Fundus Sample" className="sample-image" />
-        </div>
+          
+  <div className="doctor-fundus-container">
+    <img src="/pointing.jpg" alt="Doctor pointing" className="doctor-image" />
+    
+    <div className="fundus-container">
+      <div className="fundus-gallery">
+        <img src="/fundus1.jpeg" alt="Fundus Image 1" className="fundus-image" />
+        <img src="/fundus2.jpeg" alt="Fundus Image 2" className="fundus-image" />
+        <img src="/fundus3.jpeg" alt="Fundus Image 3" className="fundus-image" />
+        <img src="/fundus14.jpeg" alt="Fundus Image 4" className="fundus-image" />
       </div>
     </div>
+
+  </div>
+
+
+</div>
+
+</div>
+
+      </div>
+  
   );
 };
 
