@@ -1,0 +1,22 @@
+.feature-card {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+}
+
+.try-now-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.try-now-btn:hover {
+  background-color: #0056b3;
+}
