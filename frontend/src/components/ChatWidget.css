@@ -1,0 +1,90 @@
+/* ChatWidget.css */
+.chat-widget {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.chat-btn {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 24px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.chat-btn::after {
+  content: "Chat";
+  position: absolute;
+  bottom: 75px;
+  right: 0;
+  background: #0072ff;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.chat-btn:hover::after {
+  opacity: 1;
+}
+
+.chat-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
+}
+
+.chat-modal {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 400px;
+  height: 500px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  animation: fadeInUp 0.3s ease-out;
+  z-index: 1000;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-modal {
+    width: 90%;
+    height: 90%;
+    bottom: 10px;
+    right: 5%;
+  }
+
+  .chat-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+}

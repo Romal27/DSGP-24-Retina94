@@ -1,0 +1,284 @@
+.get-location-btn {
+  margin-top: 1rem;
+  background: linear-gradient(to right, #36d1dc, #5b86e5);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background 0.3s ease;
+}
+
+.get-location-btn:hover {
+  background: linear-gradient(to right, #2980b9, #6dd5fa);
+}
+
+.loading-text {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #444;
+}
+
+.error-text {
+  margin-top: 1rem;
+  color: red;
+  font-weight: 600;
+}
+
+
+
+
+.directions-main {
+  background: linear-gradient(to right, #e0f7ff, #c6e6ff);
+  min-height: 100vh;
+  padding: 40px 20px;
+  font-family: "Segoe UI", sans-serif;
+  color: #212121;
+}
+
+
+
+.navbar {
+  width: 100%;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.logo h2 {
+  color: #0072ff;
+  margin: 0;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #002147;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.nav-links li a:hover {
+  color: #0072ff;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border: 1px solid #0072ff;
+  background: #0072ff;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #005bb5;
+}
+
+.btn-signup {
+  background: #ff3f81;
+  border-color: #ff3f81;
+}
+
+.btn-signup:hover {
+  background: #e03670;
+}
+
+.hero-section.small {
+  background: linear-gradient(135deg, #00c6ff, #a259ff);
+  padding: 20px 16px;
+  border-radius: 14px;
+  color: white;
+  text-align: center;
+  max-width: 700px;
+  max-height: 100px;
+  margin: 100px auto 30px auto;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+
+.hero-section.small h1 {
+  font-size: 1.6rem;
+  margin-bottom: 6px;
+}
+
+.hero-section.small p {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+.hospital-list-section {
+  max-width: 900px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border-left: 8px solid #00c6ff;
+}
+
+.hospital-list-section h2 {
+  text-align: center;
+  color: #5e35b1;
+  margin-bottom: 24px;
+  font-size: 1.4rem;
+}
+
+.hospital-list {
+  list-style: none;
+  padding: 0;
+}
+
+.hospital-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  margin-bottom: 14px;
+  background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+.hospital-item:hover {
+  background: linear-gradient(to right, #d1c4e9, #e1f5fe);
+  transform: translateY(-4px);
+}
+
+.hospital-item.active {
+  background-color: #ffe0b2;
+  font-weight: bold;
+}
+
+.location-button {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.location-button:hover {
+  background: #005bb5;
+}
+
+.doctor-details {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #f9fbe7;
+  padding: 24px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+  border-top: 5px solid #00c6ff;
+}
+
+.doctor-details h3 {
+  color: #0072ff;
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+.doctor-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.doctor-card {
+  background: linear-gradient(to top left, #e1f5fe, #e8f5e9);
+  padding: 20px;
+  border-radius: 14px;
+  width: 230px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0, 114, 255, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.doctor-card:hover {
+  transform: scale(1.04);
+  background: linear-gradient(to top left, #c8e6c9, #f3e5f5);
+}
+
+.doctor-card h4 {
+  margin-bottom: 6px;
+  color: #4a148c;
+  font-size: 1.1rem;
+}
+
+.doctor-card p {
+  font-size: 0.95rem;
+  color: #1a237e;
+}
+
+.doc990-box {
+  max-width: 800px;
+  margin: 40px auto 20px auto;
+  background: #fff3e0;
+  padding: 18px 24px;
+  border-radius: 14px;
+  text-align: center;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 16px rgba(255, 152, 0, 0.25);
+}
+
+.doc990-box a {
+  color: #fb8c00;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .hero-section.small h1 {
+    font-size: 1.3rem;
+  }
+
+  .hero-section.small p {
+    font-size: 0.9rem;
+  }
+
+  .hospital-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .location-button {
+    margin-top: 10px;
+  }
+
+  .doctor-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+}
