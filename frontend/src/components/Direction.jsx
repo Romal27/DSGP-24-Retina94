@@ -24,7 +24,7 @@ const Directions = () => {
         if (data.nearest_hospitals) {
           setHospitals(data.nearest_hospitals);
         } else {
-          setErrorMsg("⚠️ Unable to retrieve hospitals.");
+          setErrorMsg("⚠ Unable to retrieve hospitals.");
         }
       })
       .catch((err) => {
@@ -52,6 +52,7 @@ const Directions = () => {
 
   return (
     <div className="directions-main">
+      {/* Navbar */}
       <nav className="navbar">
         <div className="logo">Retina +94</div>
         <ul className="nav-links">
@@ -69,18 +70,19 @@ const Directions = () => {
         </div>
       </nav>
 
+      {/* Hero Section */}
       <motion.section
         className="hero-section small"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-    
         <button className="get-location-btn" onClick={fetchHospitals}>
           <FaLocationArrow /> Get My Location & Nearby Hospitals
         </button>
       </motion.section>
 
+      {/* Hospital List Section */}
       <motion.div
         className="hospital-list-section"
         initial={{ opacity: 0, y: 40 }}
@@ -101,7 +103,7 @@ const Directions = () => {
             >
               <span>{hospital.name} - {hospital.distance_km} km</span>
               <a
-                href={`https://www.google.com/maps?q=${hospital.latitude},${hospital.longitude}`}
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(hospital.name)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="location-button"
@@ -113,6 +115,7 @@ const Directions = () => {
         </ul>
       </motion.div>
 
+      {/* Doctor Details Section */}
       {selectedHospital && (
         <motion.div
           className="doctor-details"
@@ -136,6 +139,7 @@ const Directions = () => {
         </motion.div>
       )}
 
+      {/* Doc990 Box */}
       <motion.div
         className="doc990-box"
         initial={{ opacity: 0, y: 20 }}
