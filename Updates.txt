@@ -3,3 +3,4 @@ add the database integration to signup page
 change the login page
 add the database integration to login page
 remove the profile.jsx
+change the direction.jsx

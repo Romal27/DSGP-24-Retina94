@@ -1,0 +1,130 @@
+
+.location-details-container {
+  width: 100%;
+  background: linear-gradient(to right, #e0f7ff, #c6e6ff);
+  padding-top: 80px;
+}
+
+
+.hero-section {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  padding: 60px 20px;
+  color: white;
+  border-radius: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 900px;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+}
+
+.search-box {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.search-box input {
+  padding: 12px;
+  width: 60%;
+  border: none;
+  border-radius: 8px;
+}
+
+.search-box button {
+  padding: 12px 20px;
+  background: #0072ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background: #005bb5;
+}
+
+.results-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.hospital-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.hospital-info h2 {
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+.distance {
+  color: #0072ff;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.primary-button,
+.secondary-button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-button {
+  background: #0072ff;
+  color: white;
+  border: none;
+}
+
+.secondary-button {
+  background: transparent;
+  border: 1px solid #0072ff;
+  color: #0072ff;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  background: #005bb5;
+  color: white;
+}
+
+.footer {
+  background: #f5f5f5;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 30px;
+}

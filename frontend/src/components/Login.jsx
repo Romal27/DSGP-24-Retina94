@@ -41,7 +41,7 @@ const Login = () => {
 
       alert("Login successful!");
       setError("");
-      navigate("/"); // Redirect to homepage
+      navigate("/"); 
     } catch (err) {
       setError(err.message);
     }

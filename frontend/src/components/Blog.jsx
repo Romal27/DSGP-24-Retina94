@@ -97,7 +97,7 @@ const Blog = () => {
     <li><Link to="/direction">Direction</Link></li>
     <li><Link to="/blog">Blog</Link></li>
     <li><Link to="/aboutus">About Us</Link></li>
-    <li><Link to="/profile"><FaUser /></Link></li>
+   
   </ul>
   <div className="auth-buttons">
     <Link to="/login" className="btn">Login</Link>
@@ -153,25 +153,46 @@ const Blog = () => {
         ))}
       </motion.section>
 
-      <footer className="footer">
-                     <div className="footer-content">
-                       <p>© 2025 Retina +94. All rights reserved.</p>
-                       <ul className="footer-links">
-                         <li><Link to="/privacy">Privacy</Link></li>
-                         <li><Link to="/terms">Terms</Link></li>
-                       </ul>
-                       <div className="footer-contact">
-                         <p><strong>📞</strong> +94 71 123 4567</p>
-                         <p><strong>📧</strong> retina94@healthcare.ai</p>
-                       </div>
-                       <div className="social-icons">
-                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
-                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
-                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
-                       </div>
-                     </div>
-                   </footer>
+       <footer className="enhanced-footer">
+        <div className="footer-columns">
+          <div className="footer-logo">
+            <h2>Retina +94</h2>
+            <p>Empowering DR detection with AI</p>
+          </div>
+      
+          <div className="footer-column">
+            <h4>Upcoming Versions</h4>
+            <ul>
+              <li><a href="#">Android</a></li>
+              <li><a href="#">iOS</a></li>
+              <li><a href="#">Web App</a></li>
+            </ul>
+          </div>
+      
+          <div className="footer-column">
+            <h4>Follow Us</h4>
+            <div className="social-icons">
+              <a href="https://facebook.com"><FaFacebookF /></a>
+              <a href="https://twitter.com"><FaTwitter /></a>
+              <a href="https://instagram.com"><FaInstagram /></a>
+              <a href="https://linkedin.com"><FaLinkedinIn /></a>
+            </div>
+          </div>
+      
+          <div className="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><Link to="/aboutus">About Us</Link></li>
+              <li><Link to="/privacy">Privacy Policy</Link></li>
+              <li><Link to="/terms">Terms of Use</Link></li>
+              <li><Link to="/contact">Contact</Link></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2025 Retina +94. All rights reserved. | A VisionCare AI Initiative</p>
+        </div>
+      </footer>
     </div>
   );
 };

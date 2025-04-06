@@ -1,4 +1,3 @@
-// components/ChatCore.jsx
 import React, { useState, useEffect, useRef } from 'react';
 import SendIcon from '@mui/icons-material/Send';
 import { motion } from 'framer-motion';
@@ -28,7 +27,7 @@ const ChatCore = ({ showHeader = true }) => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleSend = (customText) => {
+  const handleSend = async (customText) => {
     const text = customText || input;
     if (!text.trim()) return;
 
@@ -43,32 +42,41 @@ const ChatCore = ({ showHeader = true }) => {
     setInput('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      const reply = {
-        id: messages.length + 2,
-        text: generateResponse(text),
+    try {
+      const response = await fetch('http://localhost:5005/webhooks/rest/webhook', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          sender: 'user',
+          message: text,
+        }),
+      });
+
+      const data = await response.json();
+      const botReplies = data.map((msg, index) => ({
+        id: messages.length + 2 + index,
+        text: msg.text,
         sender: 'bot',
         timestamp: new Date(),
-      };
-      setMessages((prev) => [...prev, reply]);
+      }));
+
+      setMessages((prev) => [...prev, ...botReplies]);
+    } catch (error) {
+      console.error('Error connecting to Rasa:', error);
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: messages.length + 2,
+          text: "⚠️ Sorry, I'm having trouble reaching the server.",
+          sender: 'bot',
+          timestamp: new Date(),
+        },
+      ]);
+    } finally {
       setIsTyping(false);
-    }, 1200);
-  };
-
-  const generateResponse = (msg) => {
-    const q = msg.toLowerCase();
-    if (q.includes('diabetic retinopathy'))
-      return 'Diabetic Retinopathy is a complication of diabetes. Regular eye checkups are key.';
-    if (q.includes('treatment'))
-      return 'Treatments include laser therapy, anti-VEGF injections, and vitrectomy.';
-    if (q.includes('hello') || q.includes('hi'))
-      return 'Hi there! 👋 How can I support your eye health journey today?';
-    if (q.includes('stage'))
-      return 'Diabetic Retinopathy progresses through four stages from mild to proliferative. Early detection is crucial.';
-    if (q.includes('how often') || q.includes('eye check'))
-      return 'People with diabetes should get their eyes checked at least once a year.';
-
-    return "I'm not sure I understand. Could you rephrase that?";
+    }
   };
 
   const formatTime = (date) =>
@@ -89,13 +97,12 @@ const ChatCore = ({ showHeader = true }) => {
           </div>
         </div>
       )}
+
       <div className="chatbot-messages">
         {messages.map((msg) => (
           <motion.div
             key={msg.id}
-            className={`message-wrapper ${
-              msg.sender === 'user' ? 'user-message-wrapper' : 'bot-message-wrapper'
-            }`}
+            className={`message-wrapper ${msg.sender === 'user' ? 'user-message-wrapper' : 'bot-message-wrapper'}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
