@@ -22,20 +22,17 @@ conn = psycopg2.connect(
     password="dsgpdb"
 )
 
-
-# Google Geolocation API Key
 GOOGLE_API_KEY = "AIzaSyA7lfK7JapLewpBD7q9aOhypalhy7YL2xk"
 
-# Haversine formula to calculate distance
 def haversine(lat1, lon1, lat2, lon2):
-    R = 6371  # Earth radius in kilometers
+    R = 6371  
     dLat = math.radians(lat2 - lat1)
     dLon = math.radians(lon2 - lon1)
     a = math.sin(dLat / 2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dLon / 2)**2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
     return R * c
 
-# Get user location from Google Geolocation API
+
 def get_geolocation():
     try:
         url = f"https://www.googleapis.com/geolocation/v1/geolocate?key={GOOGLE_API_KEY}"
@@ -140,7 +137,51 @@ def login_user():
     except Exception as e:
         print("Login error:", e)
         return jsonify({"message": "Internal server error"}), 500
+@app.route("/api/users/profile/<username>", methods=["GET"])
+def get_user_profile(username):
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                SELECT username, email
+                FROM Users
+                WHERE username = %s
+            """, (username,))
+            user = cur.fetchone()
 
+        if not user:
+            return jsonify({"message": "User not found"}), 404
+
+        return jsonify({
+            "username": user[0],
+            "email": user[1]
+        }), 200
+    except Exception as e:
+        conn.rollback()
+        print("Error fetching user profile:", e)
+        return jsonify({"message": "Internal server error"}), 500
+
+
+@app.route("/api/users/profile/<username>", methods=["PUT"])
+def update_user_profile(username):
+    data = request.get_json()
+    new_username = data.get("username")
+
+    if not new_username:
+        return jsonify({"message": "Username cannot be empty"}), 400
+
+    try:
+        with conn.cursor() as cur:
+            cur.execute("""
+                UPDATE Users 
+                SET username = %s
+                WHERE username = %s
+            """, (new_username, username))
+            conn.commit()
+        return jsonify({"message": "Profile updated successfully"}), 200
+    except Exception as e:
+        print("Profile update error:", e)
+        conn.rollback()
+        return jsonify({"message": "Update failed"}), 500
 
 
 if __name__ == "__main__":
