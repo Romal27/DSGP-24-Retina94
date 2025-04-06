@@ -1,0 +1,123 @@
+/* ChatWidget.css */
+.chat-widget-container {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 999;
+  }
+  
+  /* Keep the button fixed and unaffected by popup */
+  .chat-float-button {
+    position: fixed; /* <-- Add this */
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    z-index: 1000; /* Ensure it stays above everything */
+  }
+  
+  .chat-float-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  }
+  
+  /* Tooltip label on hover (optional) */
+  .chat-float-button::after {
+    content: "Retina Bot";
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    background-color: #1e3a8a;
+    color: white;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .chat-float-button:hover::after {
+    opacity: 1;
+  }
+  
+  /* Chat popup */
+  .chatbot-popup {
+    position: fixed; /* <-- also fixed */
+    bottom: 90px;
+    right: 24px;
+    width: 380px;
+    height: 520px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+    z-index: 999;
+  }
+  
+  .chatbot-popup {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    height: 520px;
+    overflow: hidden;
+  }
+  
+  .chatbot-popup > .chatbot-container {
+    height: 100%;
+    padding: 0 !important;
+    overflow: hidden;
+    border-radius: 0 0 16px 16px;
+  }
+  
+  .chatbot-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    scroll-behavior: smooth;
+    background: #f8fbff;
+  }
+  
+  
+  .chatbot-popup-header {
+    background: linear-gradient(135deg, #3b82f6, #60a5fa);
+    color: white;
+    padding: 0.75rem 1rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+  }
+  
+  .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  /* Animation */
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+  }
+  
