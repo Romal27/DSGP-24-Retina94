@@ -7,9 +7,9 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [error, setError] = useState("");
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!username || !password) {
@@ -17,10 +17,34 @@ const Login = () => {
       return;
     }
 
-    console.log("Logging in with", { username, password, rememberMe });
-    setError("");
+    try {
+      const response = await fetch("http://localhost:5000/api/users/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
 
-    navigate("/"); 
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      // Store session (could be token or just flag)
+      if (rememberMe) {
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+      } else {
+        sessionStorage.setItem("isLoggedIn", "true");
+        sessionStorage.setItem("username", username);
+      }
+
+      alert("Login successful!");
+      setError("");
+      navigate("/"); // Redirect to homepage
+    } catch (err) {
+      setError(err.message);
+    }
   };
 
   return (
