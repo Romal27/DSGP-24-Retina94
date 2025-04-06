@@ -1,0 +1,126 @@
+---
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - thanks
+  - ask_what_is_dr
+  - ask_dr_stages
+  - ask_diabetes_prevention
+  - ask_retina_symptoms
+  - ask_healthy_food
+  - ask_risk_factors
+  - ask_treatment_options
+  - ask_screening_methods
+  - ask_dr_progression_speed
+  - ask_vision_loss_risk
+  - ask_is_reversible
+  - ask_more_about_dr
+  - ask_about_specific_stage
+  - ask_no_dr_stage
+  - ask_mild_npdr_stage
+  - ask_moderate_npdr_stage
+  - ask_severe_npdr_stage
+  - ask_proliferative_dr_stage
+  - inform_stage
+  - affirm_followup
+  - vague_followup
+  - out_of_scope
+
+responses:
+  utter_greet:
+    - text: "Hey there! I’m your friendly guide to all things diabetic retinopathy and diabetes. What’s on your mind today?"
+
+  utter_goodbye:
+    - text: "See you later! Stay well and keep those eyes sparkling—drop by anytime!"
+
+  utter_thanks:
+    - text: "You’re welcome! What else can I help you with today?"
+
+  utter_ask_what_is_dr:
+    - text: "Awesome question! Diabetic retinopathy, or DR, happens when diabetes messes with your retina—the part of your eye that catches light. High blood sugar can harm its tiny blood vessels, and over time, that might blur your vision. Want to know how it starts or what to do about it?"
+
+  utter_ask_dr_stages:
+    - text: "DR has five stages, and I’d love to break them down for you:\n1. **No DR**: All clear, no signs yet!\n2. **Mild NPDR**: Tiny swellings kick things off.\n3. **Moderate NPDR**: More damage, some leaks.\n4. **Severe NPDR**: Blocked vessels spell trouble.\n5. **Proliferative DR**: New vessels grow and can bleed.\nWhich one are you curious about?"
+
+  utter_ask_diabetes_prevention:
+    - text: "Great call! To keep diabetes at bay, try:\n- Keeping your weight steady.\n- Eating balanced, low-sugar meals.\n- Moving 30 minutes most days.\n- Skipping sugary drinks.\n- Checking in with your doc.\nWant some simple tricks to start?"
+
+  utter_ask_diabetes_prevention_followup:
+    - text: "Sweet! How about a daily walk, swapping soda for water, or snacking on nuts instead of candy? Small steps, big payoffs! Need more ideas?"
+
+  utter_ask_risk_factors:
+    - text: "DR’s got some key triggers:\n- Uncontrolled diabetes is the ringleader.\n- High blood pressure and cholesterol tag along.\n- Smoking sneaks in too.\n- Longer diabetes duration ups the odds.\nWant tips to tackle any of these?"
+
+  utter_ask_treatment_options:
+    - text: "DR treatment depends on the stage:\n- **Early**: Control blood sugar, pressure, and cholesterol.\n- **Mid-to-late**: Lasers or eye injections can help.\n- **Advanced**: Surgery like vitrectomy might step in.\nWhich one catches your eye?"
+
+  utter_screening_followup:
+    - text: "Screening’s easy! Most need it yearly, more if DR’s active. The dilated exam might blur things for a bit—bring shades! Want to know about a specific test?"
+
+  utter_ask_dr_progression_speed:
+    - text: "Good one! DR’s speed varies. With tight control, it might stay mild for years. Let it slide, and it can race through stages. Regular screening’s your secret weapon—want to hear more about that?"
+
+  utter_ask_vision_loss_risk:
+    - text: "DR can threaten your sight if it hits severe or proliferative stages, but early action cuts that risk way down. Want to know what to watch for?"
+
+  utter_ask_is_reversible:
+    - text: "Here’s the scoop: DR doesn’t fully reverse, but early stages can stall with good care—like treatments and lifestyle shifts. Want tips to keep it from worsening?"
+
+  utter_ask_more_about_dr:
+    - text: "DR’s a sneaky diabetes sidekick that can blur your vision if ignored. What part do you want to explore more—stages, symptoms, or how to manage it?"
+
+  utter_ask_about_specific_stage:
+    - text: "Nice! Which stage are we digging into? Say ‘mild NPDR’ or ‘PDR,’ and I’ll give you the full rundown!"
+
+  utter_ask_no_dr_stage:
+    - text: "No DR is the goal—no retinopathy yet! Keep blood sugar steady and get eye checkups to stay there. Want to know how often to check in?"
+
+  utter_ask_mild_npdr_stage:
+    - text: "Mild NPDR is the first step—small swellings (microaneurysms) pop up in your retina’s vessels. Vision’s usually fine, but diabetes control is clutch. Want to know what’s next if it progresses?"
+
+  utter_ask_moderate_npdr_stage:
+    - text: "Moderate NPDR ramps up—more vessel damage, maybe leaks, and a hint of blur might start. Checkups and control are your best buds. Curious how to manage it?"
+
+  utter_ask_severe_npdr_stage:
+    - text: "Severe NPDR’s a red flag—blocked vessels starve your retina of oxygen. It’s quiet now, but lasers might step in. Want to know what happens if it advances?"
+
+  utter_ask_proliferative_dr_stage:
+    - text: "Proliferative DR (PDR) is intense—new, weak vessels grow, bleed, or scar, risking your sight. Fast action like lasers or shots is key. Want the details?"
+
+  utter_healthy_food_followup:
+    - text: "Try oatmeal with berries for breakfast or salmon with kale for dinner—tasty and diabetes-friendly! Want more delicious ideas?"
+
+  utter_fallback:
+    - text: "Oops, I didn’t catch that! Try again, or ask me about DR stages, symptoms, or food tips—whatever’s on your mind!"
+
+entities:
+  - dr_stage
+
+actions:
+  - action_suggest_healthy_food
+  - action_explain_dr_stage
+  - action_handle_affirm_followup
+  - action_handle_vague_followup
+  - action_explain_symptoms
+  - action_explain_screening
+
+slots:
+  dr_stage:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: dr_stage
+
+  last_question_context:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+

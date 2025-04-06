@@ -1,0 +1,99 @@
+---
+version: "3.1"
+
+rules:
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Say goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Respond to thanks
+    steps:
+      - intent: thanks
+      - action: utter_thanks
+
+  - rule: Explain what DR is
+    steps:
+      - intent: ask_what_is_dr
+      - action: utter_ask_what_is_dr
+
+  - rule: List DR stages
+    steps:
+      - intent: ask_dr_stages
+      - action: utter_ask_dr_stages
+
+  - rule: Suggest diabetes prevention
+    steps:
+      - intent: ask_diabetes_prevention
+      - action: utter_ask_diabetes_prevention
+
+  - rule: Explain risk factors
+    steps:
+      - intent: ask_risk_factors
+      - action: utter_ask_risk_factors
+
+  - rule: List treatment options
+    steps:
+      - intent: ask_treatment_options
+      - action: utter_ask_treatment_options
+
+  - rule: Explain progression speed
+    steps:
+      - intent: ask_dr_progression_speed
+      - action: utter_ask_dr_progression_speed
+
+  - rule: Discuss vision loss risk
+    steps:
+      - intent: ask_vision_loss_risk
+      - action: utter_ask_vision_loss_risk
+
+  - rule: Answer if DR is reversible
+    steps:
+      - intent: ask_is_reversible
+      - action: utter_ask_is_reversible
+
+  - rule: Provide more DR info
+    steps:
+      - intent: ask_more_about_dr
+      - action: utter_ask_more_about_dr
+
+  - rule: Handle specific stage question
+    steps:
+      - intent: ask_about_specific_stage
+      - action: utter_ask_about_specific_stage
+
+  - rule: Explain No DR stage
+    steps:
+      - intent: ask_no_dr_stage
+      - action: utter_ask_no_dr_stage
+
+  - rule: Explain Mild NPDR stage
+    steps:
+      - intent: ask_mild_npdr_stage
+      - action: utter_ask_mild_npdr_stage
+
+  - rule: Explain Moderate NPDR stage
+    steps:
+      - intent: ask_moderate_npdr_stage
+      - action: utter_ask_moderate_npdr_stage
+
+  - rule: Explain Severe NPDR stage
+    steps:
+      - intent: ask_severe_npdr_stage
+      - action: utter_ask_severe_npdr_stage
+
+  - rule: Explain Proliferative DR stage
+    steps:
+      - intent: ask_proliferative_dr_stage
+      - action: utter_ask_proliferative_dr_stage
+
+  - rule: Fallback for unrecognized input
+    steps:
+      - intent: out_of_scope
+      - action: utter_fallback
+
