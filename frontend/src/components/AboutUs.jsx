@@ -1,9 +1,19 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { FaRobot, FaHeart, FaEnvelope, FaPhoneAlt, FaUser } from "react-icons/fa";
 import { GiArtificialIntelligence } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import "./AboutUs.css";
+import {
+  FaUser,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaHeart,
+  FaRobot
+} from "react-icons/fa";
 
 const AboutUs = () => {
   const teamMembers = [
@@ -15,7 +25,6 @@ const AboutUs = () => {
 
   return (
     <div className="about-container">
-      {/* Reused Navbar from Home */}
       <nav className="navbar">
   <div className="logo">Retina +94</div>
   <ul className="nav-links">
@@ -23,7 +32,7 @@ const AboutUs = () => {
     <li><Link to="/stage">Stage</Link></li>
     <li><Link to="/chatbot">Chatbot</Link></li>
     <li><Link to="/direction">Direction</Link></li>
-    <li><Link to="/blog">Blog</Link></li> {/* ✅ Added this line */}
+    <li><Link to="/blog">Blog</Link></li> 
     <li><Link to="/aboutus">About Us</Link></li>
     <li><Link to="/profile"><FaUser /></Link></li>
   </ul>
@@ -34,21 +43,19 @@ const AboutUs = () => {
 </nav>
 
 
-      {/* Hero Section */}
       <motion.section
         className="hero-section"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1>🚀 Empowering Vision with AI</h1>
-        <p>
+        <h2>🚀 Empowering Vision</h2>
+        <h1>
           Welcome to <span className="highlight">Retina +94</span> — where
           technology meets healthcare to safeguard vision and transform lives.
-        </p>
+        </h1>
       </motion.section>
 
-      {/* Mission Section */}
       <motion.section
         className="about-card"
         initial={{ opacity: 0, y: 30 }}
@@ -64,18 +71,17 @@ const AboutUs = () => {
         </p>
       </motion.section>
 
-      {/* Features Section */}
       <section className="about-features">
         {[
           {
             icon: <GiArtificialIntelligence className="feature-icon" />,
-            title: "AI-Powered Detection",
+            title: "DR Stage Detection",
             desc: "Our models analyze fundus images with high accuracy.",
           },
           {
             icon: <FaHeart className="feature-icon" />,
-            title: "Early Diagnosis",
-            desc: "Detect diabetic retinopathy at its earliest stages.",
+            title: "Tracking Hospitals",
+            desc: "Guiding user to the nearest hospital",
           },
           {
             icon: <FaRobot className="feature-icon" />,
@@ -99,7 +105,6 @@ const AboutUs = () => {
         ))}
       </section>
 
-      {/* Team Section */}
       <motion.section
         className="team-section"
         initial={{ opacity: 0, y: 30 }}
@@ -124,7 +129,6 @@ const AboutUs = () => {
         </div>
       </motion.section>
 
-      {/* Contact Section */}
       <motion.section
         className="contact-section"
         initial={{ opacity: 0, y: 30 }}
@@ -144,17 +148,25 @@ const AboutUs = () => {
           </p>
         </div>
       </motion.section>
-
-      {/* Footer */}
-      <footer className="footer">
-        <div className="footer-content">
-          <p>© 2025 Retina +94. All rights reserved.</p>
-          <ul className="footer-links">
-            <li><Link to="/privacy">Privacy Policy</Link></li>
-            <li><Link to="/terms">Terms of Service</Link></li>
-          </ul>
-        </div>
-      </footer>
+<footer className="footer">
+               <div className="footer-content">
+                 <p>© 2025 Retina +94. All rights reserved.</p>
+                 <ul className="footer-links">
+                   <li><Link to="/privacy">Privacy</Link></li>
+                   <li><Link to="/terms">Terms</Link></li>
+                 </ul>
+                 <div className="footer-contact">
+                   <p><strong>📞</strong> +94 71 123 4567</p>
+                   <p><strong>📧</strong> retina94@healthcare.ai</p>
+                 </div>
+                 <div className="social-icons">
+                   <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+                   <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+                   <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                   <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+                 </div>
+               </div>
+             </footer>
     </div>
   );
 };

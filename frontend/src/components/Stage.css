@@ -257,80 +257,64 @@ body {
   border: 3px solid #00c6ff;
   object-fit: cover;
 }
-
-/* Footer */
-.footer {
-  background: linear-gradient(135deg, #0b4da2, #007bff);
-  padding: 30px 20px;
-  width: 100%;
-  color: white;
-  margin-top: auto;
-  position: relative;
-}
-
 .footer-content {
   display: flex;
-  justify-content: space-around;
-  max-width: 1200px;
-  margin: 0 auto;
   flex-wrap: wrap;
-  gap: 20px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  text-align: left;
+  gap: 1rem;
 }
 
-.footer-section {
-  width: 220px;
-  text-align: center;
+.footer-links,
+.footer-contact,
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.footer-section h3 {
-  font-size: 1.3rem;
-  margin-bottom: 12px;
-  color: #ffdd57;
-}
-
-.footer-section p {
-  font-size: 1.1rem;
-  opacity: 0.9;
-}
-
-.footer-section ul {
+.footer-links li {
   list-style: none;
-  padding: 0;
 }
 
-.footer-section li {
-  margin-bottom: 8px;
-  font-size: 1rem;
-}
-
-.footer-section a {
-  color: white;
+.footer-links a,
+.footer-contact p {
+  color: #333;
   text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-contact p {
+  margin: 0;
+}
+
+.social-icons a {
+  font-size: 1.2rem;
+  color: #555;
   transition: color 0.3s ease;
 }
 
-.footer-section a:hover {
-  color: #ffdd57;
+.social-icons a:hover {
+  color: #229799;
 }
 
-.social-links a {
-  font-size: 1.4rem;
-  margin-right: 10px;
-  color: white;
-  transition: color 0.3s ease;
-}
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-.social-links a:hover {
-  color: #ffdd57;
+  .footer-links,
+  .footer-contact,
+  .social-icons {
+    justify-content: center;
+  }
 }
-
-.footer-bottom {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 1rem;
-  opacity: 0.8;
-}
-
 html,
 body {
   margin: 0;
@@ -375,13 +359,5 @@ body {
     height: 200px;
   }
 
-  .footer-content {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
-  }
-
-  .footer-section {
-    width: 100%;
-  }
+ 
 }

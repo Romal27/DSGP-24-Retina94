@@ -1,18 +1,31 @@
-/* Global Styles */
-body {
-  font-family: "Arial Rounded MT Bold", "Segoe UI", sans-serif;
+/* GLOBAL RESET AND OVERFLOW FIX */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Arial Rounded MT Bold", "Segoe UI", sans-serif;
   background: linear-gradient(to right, #eaf6ff, #d8eefe);
   color: #002147;
 }
 
+.main-wrapper {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* CONTAINER */
 .home-container {
   width: 100%;
   text-align: center;
   padding-top: 70px;
 }
 
-/* Navbar */
+/* NAVBAR */
 .navbar {
   background: #000c1f;
   padding: 10px 30px;
@@ -23,7 +36,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   z-index: 100;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -32,8 +47,10 @@ body {
   color: #00e0ff;
 }
 
+/* NAV LINKS */
 .nav-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   list-style: none;
 }
@@ -45,30 +62,37 @@ body {
   font-size: 1.1rem;
 }
 
+/* AUTH BUTTONS */
+.auth-buttons {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
 .auth-buttons .btn {
-  margin-left: 10px;
   background: none;
-  border: 1px solid #00e0ff;
+  border: 1px solid #00395f;
   padding: 10px 18px;
   border-radius: 6px;
-  color: #00e0ff;
+  color: #00395f;
   font-weight: bold;
   text-decoration: none;
   transition: background 0.3s ease;
   font-size: 1rem;
+  white-space: nowrap;
 }
 
 .auth-buttons .btn-signup {
-  background: #00e0ff;
+  background: #00395f;
   color: white;
 }
 
 .auth-buttons .btn:hover {
-  background: #00e0ff;
+  background: #00395f;
   color: white;
 }
 
-/* Hero Section */
+/* HERO SECTION */
 .hero-section {
   height: 100vh;
   background: #e5f0ff;
@@ -118,7 +142,7 @@ body {
   background: #005fcc;
 }
 
-/* Timeline */
+/* TIMELINE SECTION */
 .timeline-section {
   padding: 60px 20px;
   max-width: 1100px;
@@ -152,7 +176,7 @@ body {
   margin-bottom: 14px;
 }
 
-/* Features */
+/* SERVICES SECTION */
 .services-section {
   padding: 60px 20px;
   max-width: 1100px;
@@ -203,7 +227,7 @@ body {
   color: #0072ff;
 }
 
-/* Testimonials */
+/* TESTIMONIALS */
 .testimonials-section {
   background: #0056a3;
   color: white;
@@ -221,45 +245,52 @@ body {
   font-size: 1.2rem;
 }
 
-/* Contact */
-.contact-section {
-  padding: 60px 20px;
-  max-width: 1100px;
-  margin: auto;
-  text-align: center;
-  color: #001f33;
+/* FOOTER */
+.footer-content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+  border-top: 1px solid #ddd;
+  gap: 2rem; 
+  flex-wrap: wrap;
 }
 
-.contact-info {
-  font-size: 1.4rem;
-  line-height: 1.8;
-  margin-top: 20px;
-}
-
-/* Footer */
-.footer {
-  background: #000c1f;
-  padding: 20px 0;
-  text-align: center;
-  color: white;
+.footer-links,
+.footer-contact,
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
 .footer-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 0;
-  margin: 10px 0 0 0;
+  margin-left: 1rem; 
 }
 
-.footer-links a {
+.footer-links a,
+.footer-contact p {
+  color: #333;
   text-decoration: none;
-  color: #00e0ff;
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
-/* Chat */
+.footer-contact p {
+  margin: 0;
+}
+
+.social-icons a {
+  font-size: 1.2rem;
+  color: #555;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #229799;
+}
+
+/* CHAT */
 .chat-btn {
   position: fixed;
   bottom: 25px;
@@ -287,8 +318,30 @@ body {
   z-index: 1000;
 }
 
-/* Responsive */
+/* RESPONSIVE FIXES */
 @media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer-links,
+  .footer-contact,
+  .social-icons {
+    justify-content: center;
+  }
+
   .timeline, .features-line {
     flex-direction: column;
     align-items: center;

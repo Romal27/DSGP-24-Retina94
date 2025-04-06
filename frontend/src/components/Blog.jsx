@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
 import "./Blog.css";
 import whatisDR from "../assets/whatisDR.jpg";
 import screening from "../assets/screening,prevention&treatment.webp";
@@ -13,6 +12,13 @@ import treatedDR from "../assets/treatedDR.jpg";
 import drBlog8 from "../assets/DRblog8.jpg";
 import fundusCamera from "../assets/funduscamera.jpg";
 import futureOfDR from "../assets/futureofDR.png";
+import {
+  FaUser,
+  FaFacebookF,
+  FaTwitter,
+  FaInstagram,
+  FaLinkedinIn
+} from "react-icons/fa";
 
 
 const Blog = () => {
@@ -147,16 +153,25 @@ const Blog = () => {
         ))}
       </motion.section>
 
-      {/* Footer */}
       <footer className="footer">
-        <div className="footer-content">
-          <p>© 2025 Retina +94. All rights reserved.</p>
-          <ul className="footer-links">
-            <li><Link to="/privacy">Privacy Policy</Link></li>
-            <li><Link to="/terms">Terms of Service</Link></li>
-          </ul>
-        </div>
-      </footer>
+                     <div className="footer-content">
+                       <p>© 2025 Retina +94. All rights reserved.</p>
+                       <ul className="footer-links">
+                         <li><Link to="/privacy">Privacy</Link></li>
+                         <li><Link to="/terms">Terms</Link></li>
+                       </ul>
+                       <div className="footer-contact">
+                         <p><strong>📞</strong> +94 71 123 4567</p>
+                         <p><strong>📧</strong> retina94@healthcare.ai</p>
+                       </div>
+                       <div className="social-icons">
+                         <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+                         <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaTwitter /></a>
+                         <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+                         <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
+                       </div>
+                     </div>
+                   </footer>
     </div>
   );
 };

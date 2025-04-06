@@ -1,27 +1,31 @@
-// ChatWidget.jsx
-import React, { useState } from "react";
-import { FaRobot, FaTimes } from "react-icons/fa";
-import Chatbot from "./Chatbot";
-import "./ChatWidget.css";
+// components/ChatWidget.jsx
+import React, { useState } from 'react';
+import ChatCore from './ChatCore';
+import ChatIcon from '@mui/icons-material/Chat';
+import CloseIcon from '@mui/icons-material/Close';
+import './ChatWidget.css';
 
 const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleChat = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <div className="chat-widget">
-      <button className="chat-btn" onClick={toggleChat} aria-label="Toggle Chatbot">
-        {isOpen ? <FaTimes /> : <FaRobot />}
-      </button>
-
+    <div className="chat-widget-container">
       {isOpen && (
-        <div className="chat-modal">
-          <Chatbot />
+        <div className="chatbot-popup">
+          <div className="chatbot-popup-header">
+            <span>Retina Bot</span>
+            <button onClick={() => setIsOpen(false)} className="close-btn">
+              <CloseIcon />
+            </button>
+          </div>
+          <ChatCore showHeader={false} />
+
         </div>
       )}
+
+      <button onClick={() => setIsOpen(!isOpen)} className="chat-float-button">
+        <ChatIcon />
+      </button>
     </div>
   );
 };
