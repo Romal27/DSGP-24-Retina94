@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Signup.css"; 
+import "./Signup.css";
 
 const Signup = () => {
     const [userName, setUserName] = useState("");
@@ -11,42 +11,60 @@ const Signup = () => {
     const [error, setError] = useState("");
 
     const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        // Frontend validations
         if (!userName || !email || !password || !confPassword) {
-            setError("All fields are required");
+            setError("All fields are required.");
             return;
         }
-    
+
+        if (!isValidEmail(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
         if (password !== confPassword) {
             setError("Passwords do not match.");
             return;
         }
-    
-        const userData = { userName, email, password };
-    
+
+        if (!agreeTerms) {
+            setError("You must agree to the Terms & Conditions.");
+            return;
+        }
+
+        const userData = {
+            userName,
+            email,
+            password,
+            agreed_terms: agreeTerms
+        };
+
         try {
             const response = await fetch("http://localhost:5000/api/users/register", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(userData),
             });
-    
+
             const data = await response.json();
             if (!response.ok) throw new Error(data.message);
-    
+
             alert("Registration successful!");
             setUserName("");
             setEmail("");
             setPassword("");
             setConfPassword("");
+            setAgreeTerms(false);
             setError("");
         } catch (err) {
-            setError(err.message);
+            setError(err.message || "Something went wrong. Please try again.");
         }
     };
-    
+
     return (
         <div className="container">
             <div className="signupBox">
@@ -113,7 +131,14 @@ const Signup = () => {
                         </label>
                     </div>
 
-                    <button type="submit" className="button">Sign Up</button>
+                    <button
+                        type="submit"
+                        className="button"
+                        disabled={!agreeTerms}
+                        style={{ opacity: agreeTerms ? 1 : 0.6, cursor: agreeTerms ? "pointer" : "not-allowed" }}
+                    >
+                        Sign Up
+                    </button>
                 </form>
             </div>
 
