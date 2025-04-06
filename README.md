@@ -11,11 +11,12 @@ This component focuses on developing an intelligent chatbot for the diabetic ret
 1. **Stage-Based Guidance:** Tailored educational tips based on the user’s condition.
 2. **Q&A Capability:** Leverages natural language processing (NLP) to answer user queries.
 3. **Dynamic Interaction:** Engages users with meaningful and stage-specific advice.
-4. **Report generation.
-5. **Integration with hospital recommendation system (component by Student 4).
 
 ## Technologies
+- Rasa
+- Bert
+- spacy
 - Python
 - Flask
 - Natural Language Processing (NLP) Libraries
-- OpenAI API (for advanced chatbot features) 
+  
