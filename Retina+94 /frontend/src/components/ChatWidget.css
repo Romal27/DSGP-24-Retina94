@@ -1,4 +1,4 @@
-/* ChatWidget.css */
+
 .chat-widget-container {
     position: fixed;
     bottom: 24px;
@@ -6,9 +6,8 @@
     z-index: 999;
   }
   
-  /* Keep the button fixed and unaffected by popup */
   .chat-float-button {
-    position: fixed; /* <-- Add this */
+    position: fixed; 
     bottom: 24px;
     right: 24px;
     background: linear-gradient(135deg, #3b82f6, #60a5fa);
@@ -21,7 +20,7 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: transform 0.2s ease, box-shadow 0.3s ease;
-    z-index: 1000; /* Ensure it stays above everything */
+    z-index: 1000; 
   }
   
   .chat-float-button:hover {
@@ -29,7 +28,6 @@
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
   }
   
-  /* Tooltip label on hover (optional) */
   .chat-float-button::after {
     content: "Retina Bot";
     position: absolute;
@@ -49,9 +47,9 @@
     opacity: 1;
   }
   
-  /* Chat popup */
+  
   .chatbot-popup {
-    position: fixed; /* <-- also fixed */
+    position: fixed; 
     bottom: 90px;
     right: 24px;
     width: 380px;
@@ -109,7 +107,6 @@
     cursor: pointer;
   }
   
-  /* Animation */
   @keyframes slideUp {
     from {
       transform: translateY(20px);

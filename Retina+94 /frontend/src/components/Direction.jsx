@@ -59,7 +59,7 @@ const Directions = () => {
   return (
     <div className="page-wrapper">
       <div className="directions-main">
-        {/* Navbar */}
+       
         <nav className="navbar">
           <div className="logo">Retina +94</div>
           <ul className="nav-links">
@@ -69,6 +69,7 @@ const Directions = () => {
             <li><Link to="/direction">Direction</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             <li><Link to="/aboutus">About Us</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
           </ul>
           <div className="auth-buttons">
             <Link to="/login" className="btn">Login</Link>
@@ -123,7 +124,6 @@ const Directions = () => {
           </ul>
         </motion.div>
 
-        {/* Doctors Section */}
         {selectedHospital && (
           <motion.div
             className="doctor-details"
@@ -147,7 +147,6 @@ const Directions = () => {
           </motion.div>
         )}
 
-        {/* DOC990 Box */}
         <motion.div
           className="doc990-box"
           initial={{ opacity: 0, y: 20 }}
@@ -168,7 +167,6 @@ const Directions = () => {
         </motion.div>
       </div>
 
-      {/* Footer */}
       <footer className="enhanced-footer">
         <div className="footer-columns">
           <div className="footer-logo">

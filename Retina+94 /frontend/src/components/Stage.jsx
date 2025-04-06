@@ -113,7 +113,7 @@ const StagePage = () => {
             <li><Link to="/direction">Direction</Link></li>
             <li><Link to="/blog">Blog</Link></li>
             <li><Link to="/aboutus">About Us</Link></li>
-            
+            <li><Link to="/profile">Profile</Link></li>
           </ul>
           <div className="auth-buttons">
             <Link to="/login" className="btn">Login</Link>

@@ -14,7 +14,7 @@ import {
   FaHeart,
   FaRobot
 } from "react-icons/fa";
-import RomalImg from "../assets/romal.jpeg";
+import RomalImg from "../assets/romal.jpg";
 import HirushiImg from "../assets/hirushi.jpg";
 import TeranImg from "../assets/teran.jpg";
 import ThiviruImg from "../assets/thiviru.jpg";
@@ -38,7 +38,7 @@ const AboutUs = () => {
     <li><Link to="/direction">Direction</Link></li>
     <li><Link to="/blog">Blog</Link></li> 
     <li><Link to="/aboutus">About Us</Link></li>
-   
+   <li><Link to="/profile">Profile</Link></li>
   </ul>
   <div className="auth-buttons">
     <Link to="/login" className="btn">Login</Link>

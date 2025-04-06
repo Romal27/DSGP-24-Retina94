@@ -7,7 +7,7 @@ const ChatCore = ({ showHeader = true }) => {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      text: "👁️ Hello! I'm Retina Bot, your eye health assistant. How can I help you today?",
+      text: "👁 Hello! I'm Retina Bot, your eye health assistant. How can I help you today?",
       sender: 'bot',
       timestamp: new Date(),
     },
@@ -30,38 +30,39 @@ const ChatCore = ({ showHeader = true }) => {
   const handleSend = async (customText) => {
     const text = customText || input;
     if (!text.trim()) return;
-  
+
     const userMsg = {
       id: messages.length + 1,
       text,
       sender: 'user',
       timestamp: new Date(),
     };
-  
+
     setMessages((prev) => [...prev, userMsg]);
     setInput('');
     setIsTyping(true);
-  
+
     try {
-      const response = await fetch('http://localhost:5005/chatbot', {
+      const response = await fetch('http://localhost:5002/webhooks/rest/webhook', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          sender: 'user',
           message: text,
         }),
       });
-  
+
       const data = await response.json();
-  
+
       const botReply = {
         id: messages.length + 2,
-        text: data.text || "⚠️ No response received.",
+        text: data.length > 0 ? data.map((d) => d.text).join(" ") : "⚠ No response received.",
         sender: 'bot',
         timestamp: new Date(),
       };
-  
+
       setMessages((prev) => [...prev, botReply]);
     } catch (error) {
       console.error('Error connecting to chatbot API:', error);
@@ -69,7 +70,7 @@ const ChatCore = ({ showHeader = true }) => {
         ...prev,
         {
           id: messages.length + 2,
-          text: "⚠️ Sorry, I'm having trouble reaching the server.",
+          text: "⚠ Sorry, I'm having trouble reaching the server.",
           sender: 'bot',
           timestamp: new Date(),
         },
@@ -78,7 +79,7 @@ const ChatCore = ({ showHeader = true }) => {
       setIsTyping(false);
     }
   };
-  
+
   const formatTime = (date) =>
     date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 

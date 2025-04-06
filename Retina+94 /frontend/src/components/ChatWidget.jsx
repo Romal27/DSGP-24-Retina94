@@ -1,4 +1,4 @@
-// components/ChatWidget.jsx
+
 import React, { useState } from 'react';
 import ChatCore from './ChatCore';
 import ChatIcon from '@mui/icons-material/Chat';

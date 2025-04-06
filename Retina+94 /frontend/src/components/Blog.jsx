@@ -97,7 +97,7 @@ const Blog = () => {
     <li><Link to="/direction">Direction</Link></li>
     <li><Link to="/blog">Blog</Link></li>
     <li><Link to="/aboutus">About Us</Link></li>
-   
+   <li><Link to="/profile">Profile</Link></li>
   </ul>
   <div className="auth-buttons">
     <Link to="/login" className="btn">Login</Link>
@@ -105,8 +105,6 @@ const Blog = () => {
   </div>
 </nav>
 
-
-      {/* Blog Header */}
       <motion.div
         className="blog-header"
         initial={{ opacity: 0, y: -20 }}
@@ -119,7 +117,6 @@ const Blog = () => {
         </p>
       </motion.div>
 
-      {/* Blog Cards */}
       <motion.section
         className="blog-grid"
         initial={{ opacity: 0 }}

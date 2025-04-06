@@ -39,9 +39,12 @@ const Login = () => {
         sessionStorage.setItem("username", username);
       }
 
-      alert("Login successful!");
       setError("");
-      navigate("/"); 
+setTimeout(() => {
+  alert("Login successful!");
+  navigate("/");
+}, 100);
+
     } catch (err) {
       setError(err.message);
     }
