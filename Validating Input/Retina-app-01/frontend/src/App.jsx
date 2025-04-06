@@ -5,10 +5,10 @@ import StagePage from "./components/Stage";
 import Chatbot from "./components/Chatbot";
 import Directions from "./components/Direction";
 import AboutUs from "./components/AboutUs";
-
+import Profile from "./components/Profile";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
-import Blog from "./components/Blog"; // ✅ Blog component import
+import Blog from "./components/Blog";
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/direction" element={<Directions />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/blog" element={<Blog />} /> 
-      
+        <Route path="/profile" element={<Profile />} /> 
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

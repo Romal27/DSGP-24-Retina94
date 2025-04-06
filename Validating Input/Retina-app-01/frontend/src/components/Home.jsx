@@ -26,7 +26,7 @@ const Home = () => {
   <li><Link to="/direction">Direction</Link></li>
   <li><Link to="/blog">Blog</Link></li>
   <li><Link to="/aboutus">About Us</Link></li>
-  {/* Removed: <li><Link to="/profile"><FaUser /></Link></li> */}
+  <li><Link to="/profile">Profile</Link></li>
 </ul>
 
               <div className="auth-buttons">
